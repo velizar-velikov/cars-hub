@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import { config } from './config';
+import '../models/User';
+import '../models/Car';
 
 export async function databaseConfig() {
     const connectionString = config.db_connection as string;

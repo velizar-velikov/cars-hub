@@ -5,10 +5,13 @@ import express, { Application } from 'express';
 import { expressConfig } from './config/expressConfig';
 import { hbsConfig } from './config/hbsConfig';
 import { routesConfig } from './config/routesConfig';
+import { databaseConfig } from './config/databaseConfig';
 
-function start() {
+async function start() {
     const app: Application = express();
     const PORT = config.port;
+
+    await databaseConfig();
 
     expressConfig(app);
     hbsConfig(app);
