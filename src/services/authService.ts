@@ -2,7 +2,7 @@ import { User } from '../models/User';
 import { hash, compare } from 'bcrypt';
 import { config } from '../config/config';
 
-export async function register(email: string, password: string) {
+async function register(email: string, password: string) {
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -19,7 +19,7 @@ export async function register(email: string, password: string) {
     return user;
 }
 
-export async function login(email: string, password: string) {
+async function login(email: string, password: string) {
     const existingUser = await User.findOne({ email });
 
     const error = new Error('Username or password do not match');
@@ -36,3 +36,8 @@ export async function login(email: string, password: string) {
 
     return existingUser;
 }
+
+export const authService = {
+    register,
+    login,
+};
