@@ -1,14 +1,14 @@
 import dotenv from 'dotenv';
+dotenv.config();
+import { config } from './config/config';
 import express, { Application } from 'express';
 import { expressConfig } from './config/expressConfig';
 import { hbsConfig } from './config/hbsConfig';
 import { routesConfig } from './config/routesConfig';
 
-dotenv.config();
-
 function start() {
     const app: Application = express();
-    const PORT = process.env.PORT || '3000';
+    const PORT = config.port;
 
     expressConfig(app);
     hbsConfig(app);
