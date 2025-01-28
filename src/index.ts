@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
-import express, { Application, Request, Response } from 'express';
+import express, { Application } from 'express';
 import { expressConfig } from './config/expressConfig';
 import { hbsConfig } from './config/hbsConfig';
+import { routesConfig } from './config/routesConfig';
 
 dotenv.config();
 
@@ -11,10 +12,7 @@ function start() {
 
     expressConfig(app);
     hbsConfig(app);
-
-    app.get('/', (req, res) => {
-        res.render('login');
-    });
+    routesConfig(app);
 
     app.listen(PORT, () => console.log(`Server is listening at: http://localhost:${PORT}`));
 }
