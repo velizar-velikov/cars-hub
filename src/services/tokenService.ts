@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 import { config } from '../config/config';
+import { Types } from 'mongoose';
 
 interface UserData {
-    _id: string;
+    _id: Types.ObjectId;
     email: string;
     password: string;
 }
