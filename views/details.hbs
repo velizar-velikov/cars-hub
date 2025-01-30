@@ -3,45 +3,38 @@
         class='mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-6 sm:px-6 sm:py-4 lg:max-w-7xl lg:grid-cols-2 lg:px-8'
     >
         <div>
-            <h2 class='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>Technical Specifications</h2>
-            <p class='mt-4 text-gray-500'>The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards.
-                The powder coated steel divider separates active cards from new ones, or can be used to archive important task
-                lists.</p>
+            <h2 class='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>{{car.brand}} {{car.model}}</h2>
+            <p class='mt-4 text-gray-500'>{{car.description}}</p>
 
             <dl class='mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8'>
                 <div class='border-t border-gray-200 pt-4'>
                     <dt class='font-medium text-gray-900'>Engine</dt>
-                    <dd class='mt-2 text-sm text-gray-500'>2.4 liters 5 cylinder</dd>
+                    <dd class='mt-2 text-sm text-gray-500'>{{car.engine}}</dd>
                 </div>
                 <div class='border-t border-gray-200 pt-4'>
                     <dt class='font-medium text-gray-900'>Engine type/fuel used</dt>
-                    <dd class='mt-2 text-sm text-gray-500'>Diesel</dd>
+                    <dd class='mt-2 text-sm text-gray-500'>{{car.fuel}}</dd>
                 </div>
                 <div class='border-t border-gray-200 pt-4'>
                     <dt class='font-medium text-gray-900'>Dimensions</dt>
-                    <dd class='mt-2 text-sm text-gray-500'>4500mm x 1800mm x 1300mm</dd>
+                    <dd class='mt-2 text-sm text-gray-500'>{{car.dimensions}}</dd>
                 </div>
                 <div class='border-t border-gray-200 pt-4'>
                     <dt class='font-medium text-gray-900'>Dours</dt>
-                    <dd class='mt-2 text-sm text-gray-500'>4/5 dours</dd>
+                    <dd class='mt-2 text-sm text-gray-500'>{{car.doors}} dours</dd>
                 </div>
                 <div class='border-t border-gray-200 pt-4'>
                     <dt class='font-medium text-gray-900'>Wheels</dt>
-                    <dd class='mt-2 text-sm text-gray-500'>19 inch alloy wheels</dd>
+                    <dd class='mt-2 text-sm text-gray-500'>{{car.wheels}}</dd>
                 </div>
                 <div class='border-t border-gray-200 pt-4'>
                     <dt class='font-medium text-gray-900'>Tuning</dt>
-                    <dd class='mt-2 text-sm text-gray-500'>Downpipe, lightweight flywheel, short shifter, hybrid turbo, diesel
-                        injectors from 335d</dd>
+                    <dd class='mt-2 text-sm text-gray-500'>{{car.tuning}}</dd>
                 </div>
             </dl>
         </div>
         <div>
-            <img
-                src='https://mobistatic4.focus.bg/mobile/photosorg/386/1/big//11737922609117386_g0.webp'
-                alt='Walnut card tray with white powder coated steel divider and 3 punchout holes.'
-                class='rounded-lg bg-gray-100'
-            />
+            <img src='{{car.imageUrl}}' alt='{{car.brand}} {{car.model}}' class='rounded-lg bg-gray-100' />
         </div>
     </div>
 </div>

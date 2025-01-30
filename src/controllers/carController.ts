@@ -18,7 +18,6 @@ const addCarController = {
             if (!result.isEmpty()) {
                 result.throw();
             }
-            console.log(req.body);
 
             const { _id } = await carService.create(req.body);
             res.redirect(`/cars/${_id}`);

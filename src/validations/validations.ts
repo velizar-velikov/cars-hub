@@ -18,7 +18,9 @@ const validations = {
         body('doors').trim().isInt({ gt: 3, lt: 8 }).withMessage('doors must be a number between 3 and 8'),
         body('wheels').trim().isLength({ min: 3 }).withMessage('wheels must be at least 3 characters long'),
         body('dimensions').trim().isLength({ min: 10 }).withMessage('dimensions must be at least 10 characters long'),
-        body('tuning').trim().isLength({ min: 10 }).withMessage('tuning description must be at least 10 characters long'),
+        body('imageUrl').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('imageUrl must be a valid URL'),
+        body('tuning').trim().isLength({ min: 10 }).withMessage('tuning must be at least 10 characters long'),
+        body('description').trim().isLength({ min: 10 }).withMessage('description must be at least 10 characters long'),
     ],
 };
 

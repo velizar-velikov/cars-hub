@@ -12,9 +12,10 @@ async function dashboardController(req: Request, res: Response) {
     res.render('dashboard', { title: 'Cars dashboard', cars });
 }
 
-function detailsController(req: Request, res: Response) {
+async function detailsController(req: Request, res: Response) {
     const { id } = req.params;
-    res.render('details', { title: id });
+    const car = await carService.getById(id);
+    res.render('details', { title: 'Technical Specifications', car });
 }
 
 catalogRouter.get('/', homeController);

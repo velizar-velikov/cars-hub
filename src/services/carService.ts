@@ -10,6 +10,7 @@ interface CarData {
     dimensions: string;
     imageUrl: string;
     tuning: string;
+    description: string;
 }
 
 interface CarDocument extends CarData {
@@ -35,6 +36,7 @@ class CarService {
             dimensions: data.dimensions,
             imageUrl: data.imageUrl,
             tuning: data.tuning,
+            description: data.description,
         });
 
         await car.save();
@@ -57,6 +59,7 @@ class CarService {
         car.dimensions = data.dimensions;
         car.imageUrl = data.imageUrl;
         car.tuning = data.tuning;
+        car.description = data.description;
 
         await car.save();
 

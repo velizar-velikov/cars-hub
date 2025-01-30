@@ -161,11 +161,24 @@
                     <textarea
                         name='tuning'
                         id='tuning'
-                        rows='3'
+                        rows='2'
                         class='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'   
                     >{{#if data.tuning}}{{data.tuning}}{{/if}}</textarea>
                 </div>
-                <p class='mt-3 text-sm/6 text-gray-600'>Describe the tuning of the car if it has any.</p>
+                <p class='mt-1 text-sm/6 text-gray-600'>Describe the tuning of the car if it has any.</p>
+            </div>
+
+            <div class='col-span-full'>
+                <label for='description' class='block text-sm/6 font-medium text-gray-900'>Description</label>
+                <div class='mt-2'>
+                    <textarea
+                        name='description'
+                        id='description'
+                        rows='3'
+                        class='block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6'   
+                    >{{#if data.description}}{{data.description}}{{/if}}</textarea>
+                </div>
+                <p class='mt-1 text-sm/6 text-gray-600'>Describe the car in a few sentences.</p>
             </div>
 
             <div>
