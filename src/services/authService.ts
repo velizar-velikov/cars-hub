@@ -11,10 +11,10 @@ async function register(email: string, password: string) {
 
     const user = new User({
         email,
-        password: hash(password, config.salt_rounds),
+        password: await hash(password, config.salt_rounds),
     });
 
-    user.save();
+    await user.save();
 
     return user;
 }

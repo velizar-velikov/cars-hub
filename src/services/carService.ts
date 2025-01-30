@@ -35,7 +35,7 @@ class CarService {
             tuning: data.tuning,
         });
 
-        car.save();
+        await car.save();
 
         return car;
     }
@@ -55,7 +55,7 @@ class CarService {
         car.dimensions = data.dimensions;
         car.tuning = data.tuning;
 
-        car.save();
+        await car.save();
 
         return car;
     }
