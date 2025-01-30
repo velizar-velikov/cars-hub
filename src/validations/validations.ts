@@ -10,7 +10,16 @@ const validations = {
             .custom((value, { req }) => value === req.body.password)
             .withMessage('Both password must match'),
     ],
-    car: [],
+    car: [
+        body('brand').trim().isLength({ min: 3 }).withMessage('brand must be at least 3 characters long'),
+        body('model').trim().isLength({ min: 3 }).withMessage('model must be at least 3 characters long'),
+        body('engine').trim().isLength({ min: 3 }).withMessage('engine must be at least 3 characters long'),
+        body('fuel').trim().isIn(['Petrol', 'Diesel', 'LPG', 'Electric']).withMessage('fuel must be one of the provided types'),
+        body('doors').trim().isInt({ gt: 3, lt: 8 }).withMessage('doors must be a number between 3 and 8'),
+        body('wheels').trim().isLength({ min: 3 }).withMessage('wheels must be at least 3 characters long'),
+        body('dimensions').trim().isLength({ min: 10 }).withMessage('dimensions must be at least 10 characters long'),
+        body('tuning').trim().isLength({ min: 10 }).withMessage('tuning description must be at least 10 characters long'),
+    ],
 };
 
 export function validateInputs(validationType: 'register' | 'car') {

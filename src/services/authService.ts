@@ -28,7 +28,7 @@ async function login(email: string, password: string) {
         throw error;
     }
 
-    const match = compare(password, existingUser.password);
+    const match = await compare(password, existingUser.password);
 
     if (!match) {
         throw error;

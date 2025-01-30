@@ -4,10 +4,11 @@ interface CarData {
     brand: string;
     model: string;
     engine: string;
-    engineType: string;
+    fuel: string;
     doors: number;
     wheels: string;
     dimensions: string;
+    imageUrl: string;
     tuning: string;
 }
 
@@ -28,10 +29,11 @@ class CarService {
             brand: data.brand,
             model: data.model,
             engine: data.engine,
-            engineType: data.engineType,
+            fuel: data.fuel,
             doors: data.doors,
             wheels: data.wheels,
             dimensions: data.dimensions,
+            imageUrl: data.imageUrl,
             tuning: data.tuning,
         });
 
@@ -49,10 +51,11 @@ class CarService {
         car.brand = data.brand;
         car.model = data.model;
         car.engine = data.engine;
-        car.engineType = data.engineType;
+        car.fuel = data.fuel;
         car.doors = data.doors;
         car.wheels = data.wheels;
         car.dimensions = data.dimensions;
+        car.imageUrl = data.imageUrl;
         car.tuning = data.tuning;
 
         await car.save();

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { AppError } from '../utils/appError';
 import { MongooseError } from 'mongoose';
 
@@ -7,7 +7,7 @@ type Errors = {
 };
 
 export function errorHandler() {
-    return function (err: AppError & { errors?: Array<any>; data?: object }, req: Request, res: Response) {
+    return function (err: AppError & { errors?: Array<any>; data?: object }, req: Request, res: Response, next: NextFunction) {
         const errors: Errors = {};
 
         if (Array.isArray(err.errors)) {

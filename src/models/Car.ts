@@ -13,7 +13,7 @@ const carSchema = new Schema({
         type: String,
         required: true,
     },
-    engineType: {
+    fuel: {
         type: String,
         required: true,
         enum: ['Petrol', 'Diesel', 'LPG', 'Electric'],
