@@ -19,10 +19,10 @@ interface CarDocument extends CarData {
 
 class CarService {
     async getAll() {
-        return Car.find({});
+        return Car.find({}).lean();
     }
     async getById(id: string) {
-        return Car.findById(id);
+        return Car.findById(id).lean();
     }
     async create(data: CarData) {
         const car = new Car({

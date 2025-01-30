@@ -23,7 +23,16 @@ const addCarController = {
             const { _id } = await carService.create(req.body);
             res.redirect(`/cars/${_id}`);
         } catch (error) {
-            next(new AppError('add-car', error, req.body));
+            const data = {
+                ...req.body,
+                fuel: {
+                    Petrol: req.body.fuel == 'Petrol',
+                    Diesel: req.body.fuel == 'Diesel',
+                    lpg: req.body.fuel == 'LPG',
+                    electric: req.body.fuel == 'Electric',
+                },
+            };
+            next(new AppError('add-car', error, data));
         }
     },
 };

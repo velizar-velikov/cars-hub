@@ -30,6 +30,10 @@ const carSchema = new Schema({
         type: String,
         required: true,
     },
+    imageUrl: {
+        type: String,
+        required: true,
+    },
     tuning: {
         type: String,
         required: true,
