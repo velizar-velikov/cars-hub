@@ -1,4 +1,5 @@
 import { Request, Response, Router } from 'express';
+import carService from '../services/carService';
 
 const catalogRouter: Router = Router();
 
@@ -6,8 +7,9 @@ function homeController(req: Request, res: Response) {
     res.render('home');
 }
 
-function dashboardController(req: Request, res: Response) {
-    res.render('dashboard', { title: 'Cars dashboard' });
+async function dashboardController(req: Request, res: Response) {
+    const cars = await carService.getAll();
+    res.render('dashboard', { title: 'Cars dashboard', cars });
 }
 
 function detailsController(req: Request, res: Response) {

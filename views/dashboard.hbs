@@ -1,9 +1,11 @@
 <div class='bg-white'>
     <div class='mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
-        <h2 class='sr-only'>Products</h2>
 
         <div class='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
-            <a href='/cars/:id' class='group'>
+            {{#each cars}}
+            {{> car}}
+            {{/each}}
+            {{!-- <a href='/cars/:id' class='group'>
                 <img
                     src='https://www.dieseltuningparts.com/wp-content/uploads/2024/01/368222049_1314249009199653_2474012053629256880_n.jpg'
                     alt='BMW e91 330d tuned'
@@ -38,9 +40,7 @@
                 />
                 <h3 class='mt-4 text-sm text-gray-700'>Aplha Romeo 2.4 JTD tuned</h3>
                 <p class='mt-1 text-lg font-medium text-gray-900'>Q4</p>
-            </a>
-
-            <!-- More products... -->
+            </a> --}}
         </div>
     </div>
 </div>
