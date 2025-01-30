@@ -6,6 +6,7 @@ import { expressConfig } from './config/expressConfig';
 import { hbsConfig } from './config/hbsConfig';
 import { routesConfig } from './config/routesConfig';
 import { databaseConfig } from './config/databaseConfig';
+import { errorHandler } from './middlewares/errorHandler';
 
 async function start() {
     const app: Application = express();
@@ -16,6 +17,7 @@ async function start() {
     expressConfig(app);
     hbsConfig(app);
     routesConfig(app);
+    app.use(errorHandler());
 
     app.listen(PORT, () => console.log(`Server is listening at: http://localhost:${PORT}`));
 }
