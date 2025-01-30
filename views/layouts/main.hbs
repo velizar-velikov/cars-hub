@@ -32,25 +32,30 @@
                                         href='/cars'
                                         class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
                                     >Cars</a>
-                                    <a
-                                        href='/add-car'
-                                        class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                                    >Add car</a>
+                                    {{#if hasUser}}
+                                        <a
+                                            href='/add-car'
+                                            class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        >Add car</a>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
                         <div class='hidden md:block'>
                             <div class='ml-4 flex items-center md:ml-6'>
-                                <a
-                                    href='/login'
-                                    class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                                    aria-current='page'
-                                >Sign In</a>
-                                <a
-                                    href='/sign-out'
-                                    class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-                                    aria-current='page'
-                                >Sign Out</a>
+                                {{#if hasUser}}
+                                    <a
+                                        href='/sign-out'
+                                        class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        aria-current='page'
+                                    >Sign Out</a>
+                                {{else}}
+                                    <a
+                                        href='/login'
+                                        class='rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
+                                        aria-current='page'
+                                    >Sign In</a>
+                                {{/if}}
                             </div>
                         </div>
                         <div class='-mr-2 flex md:hidden'>

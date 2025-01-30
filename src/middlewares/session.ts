@@ -12,7 +12,7 @@ export function session() {
             try {
                 const payload = tokenService.verify(token);
                 req.user = payload;
-                res.locals.hasUser = payload;
+                res.locals.hasUser = true;
             } catch (error) {
                 res.clearCookie(config.cookie_name);
             }
