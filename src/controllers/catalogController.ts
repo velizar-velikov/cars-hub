@@ -3,8 +3,9 @@ import carService from '../services/carService';
 
 const catalogRouter: Router = Router();
 
-function homeController(req: Request, res: Response) {
-    res.render('home');
+async function homeController(req: Request, res: Response) {
+    const latestCar = (await carService.getLatestOne())[0];
+    res.render('home', { car: latestCar });
 }
 
 async function dashboardController(req: Request, res: Response) {
