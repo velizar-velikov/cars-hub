@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { Car } from '../models/Car';
 
 interface CarData {
@@ -46,11 +47,15 @@ class CarService {
 
         return car;
     }
-    async edit(carId: string, data: CarData): Promise<CarDocument> {
+    async edit(carId: string, data: CarData, userId: Types.ObjectId): Promise<CarDocument> {
         const car = (await Car.findById(carId)) as CarDocument;
 
         if (!car) {
             throw new Error(`Record ${carId} does not exist`);
+        }
+
+        if (car._ownerId.toString() !== userId.toString()) {
+            throw new Error('Access denied');
         }
 
         car.brand = data.brand;
@@ -69,10 +74,14 @@ class CarService {
         return car;
     }
 
-    async delete(carId: string, userId: string): Promise<CarDocument> {
+    async delete(carId: string, userId: Types.ObjectId): Promise<CarDocument> {
         const car = (await Car.findById(carId)) as CarDocument;
 
-        if (car._ownerId !== userId) {
+        if (!car) {
+            throw new Error(`Record ${carId} not found`);
+        }
+
+        if (car._ownerId.toString() !== userId.toString()) {
             throw new Error('Access denied');
         }
 

@@ -4,8 +4,13 @@ import { validateInputs } from '../validations/validations';
 import { validationResult } from 'express-validator';
 import carService from '../services/carService';
 import { AppError } from '../utils/appError';
+import { Types } from 'mongoose';
 
 const carRouter: Router = Router();
+
+interface RequestWithUser extends Request {
+    user?: { _id: Types.ObjectId };
+}
 
 const addCarController = {
     get(req: Request, res: Response) {
@@ -43,7 +48,7 @@ const editController = {
 
         res.render('edit-car', { data: car });
     },
-    async post(req: Request, res: Response, next: NextFunction) {
+    async post(req: RequestWithUser, res: Response, next: NextFunction) {
         const { id } = req.params;
         try {
             const result = validationResult(req);
@@ -52,7 +57,7 @@ const editController = {
                 result.throw();
             }
 
-            await carService.edit(id, req.body);
+            await carService.edit(id, req.body, req.user?._id as Types.ObjectId);
             res.redirect(`/cars/${id}`);
         } catch (error) {
             const data = {
@@ -69,9 +74,16 @@ const editController = {
     },
 };
 
+const deleteController = async (req: RequestWithUser, res: Response) => {
+    const { id } = req.params;
+    await carService.delete(id, req.user?._id as Types.ObjectId);
+    res.redirect('/cars');
+};
+
 carRouter.get('/add-car', isUser(), addCarController.get);
 carRouter.post('/add-car', isUser(), validateInputs('car'), addCarController.post);
 carRouter.get('/cars/:id/edit', isUser(), editController.get);
 carRouter.post('/cars/:id/edit', isUser(), validateInputs('car'), editController.post);
+carRouter.get('/cars/:id/delete', isUser(), deleteController);
 
 export default carRouter;
