@@ -1,5 +1,6 @@
 import { Request, Response, Router } from 'express';
 import carService from '../services/carService';
+import { Types } from 'mongoose';
 
 const catalogRouter: Router = Router();
 
@@ -13,10 +14,13 @@ async function dashboardController(req: Request, res: Response) {
     res.render('dashboard', { title: 'Cars dashboard', cars });
 }
 
-async function detailsController(req: Request, res: Response) {
+async function detailsController(req: Request & { user?: { _id: Types.ObjectId } }, res: Response) {
     const { id } = req.params;
     const car = await carService.getById(id);
-    res.render('details', { title: 'Technical Specifications', car });
+
+    const isOwner = Boolean(req.user && req.user._id.toString() === car._ownerId.toString());
+
+    res.render('details', { title: 'Technical Specifications', car, isOwner });
 }
 
 catalogRouter.get('/', homeController);

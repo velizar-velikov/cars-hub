@@ -1,4 +1,4 @@
-import { model, Schema } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 
 const carSchema = new Schema({
     brand: {
@@ -40,6 +40,11 @@ const carSchema = new Schema({
     },
     description: {
         type: String,
+        required: true,
+    },
+    _ownerId: {
+        type: Types.ObjectId,
+        ref: 'User',
         required: true,
     },
 });

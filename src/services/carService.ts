@@ -23,7 +23,7 @@ class CarService {
         return Car.find({}).sort({ _id: -1 }).lean();
     }
     async getById(id: string) {
-        return Car.findById(id).lean();
+        return Car.findById(id).lean() as unknown as CarDocument;
     }
     async getLatestOne() {
         return Car.find({}).sort({ _id: -1 }).limit(1).lean();
