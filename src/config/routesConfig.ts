@@ -8,5 +8,5 @@ export function routesConfig(app: Application) {
     app.use(catalogRouter);
     app.use(authRouter);
     app.use(carRouter);
-    app.get('*', notFoundController);
+    app.all('*', notFoundController);
 }
